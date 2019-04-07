@@ -31,5 +31,5 @@ urlpatterns = [
     path('createuser/', include('createuser.urls'), name='createuser'),
     path('ticket_creation/', include('ticket_creation.urls'), name='ticket_creation'),
     path('Profile/', include('Profile.urls'), name='Profile'),
-
+    path('vue_login/', include('vue_login.urls'), name='vue_login'),
 ]
