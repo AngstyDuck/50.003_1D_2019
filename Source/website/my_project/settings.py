@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'Profile',
     'createuser',
     'email_notif',
+    'vue_login',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
