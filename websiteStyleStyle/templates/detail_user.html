@@ -1,0 +1,126 @@
+{% extends 'baseuser.html' %}
+{% block content %}
+
+        </nav>
+        <div class="container-fluid">
+          <!-- Content Row -->
+
+          <div class="row">
+                  {% for row in item %}
+                      <div class="dotted">
+                          <dl class="param param-feature">
+                              <dt>Title</dt>
+                              <dd>{{ row.title }}</dd>
+                          </dl>  <!-- item-property-hor .// -->
+                          <dl class="param param-feature">
+                              <dt>Ticket/Reply id (in Ticket_Details)</dt>
+                              <dd>{{ row.id }}</dd>
+                          </dl>  <!-- item-property-hor .// -->
+                          <dl class="param param-feature">
+                              <dt>Ticket/Reply author</dt>
+                              <dd>{{ row.user }}</dd>
+                          </dl>  <!-- item-property-hor .// -->
+                          <dl class="param param-feature">
+                              <dt>Description</dt>
+                              <dd>{{ row.description }}</dd>
+                          </dl>  <!-- item-property-hor .// -->
+                          <dl class="param param-feature">
+                              <dt>User</dt>
+                              <dd>{{ row.user }}</dd>
+                          </dl>  <!-- item-property-hor .// -->
+                          <dl class="param param-feature">
+                              <dt>Thread ID (in All_Tickets)</dt>
+                              <dd>{{ row.ticket_id }}</dd>
+                          </dl>
+                          <dl class="param param-feature">
+                              <dt>Attached file</dt>
+                              <dd><a href={{ row.file }}>{{ row.file }}</a></dd>
+                          </dl>
+                      </div>
+                  {% endfor %}
+                  <div class="col">
+                  <div class="dotted">
+                      <h3>To reply to ticket thread</h3>
+                      <form method="post">
+                          {% csrf_token %}
+                          <div class="form-row">
+                              <div class="col form-group">
+                                  <label>Title</label>
+                                  <input type="text" class="form-control" name="title" placeholder="">
+                              </div>
+                              <div class="col form-group">
+                                  <label>Description</label>
+                                  <input type="text" class="form-control" name="description" placeholder="">
+                              </div>
+                              <div>
+                                  <button type="submit" class="btn btn-primary btn-block">Submit Reply</button>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+                  </div>
+
+                  <div class="row">
+                  {% if request.user.is_superuser %}
+                      {% if all_tickets_data.resolved_by == None %}
+                          <div class="dotted">
+                              <h5>Click to resolve ticket:</h5>
+                              <a href="/ticket_creation/resolve/?id={{ item.0.ticket_id }}" type="button">Resolve</a>
+                          </div>
+                      {% endif %}
+                  {% endif %}
+                  </div>
+
+                  <script>
+                      function clicked() {
+                          if (confirm('Do you want to resolve this ticket?')) {
+                              yourformelement.submit();
+                          } else {
+                              return false;
+                          }
+                      }
+                  </script>
+
+
+
+
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2019</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+       <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="{% url 'login:logout' %}">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
