@@ -32,7 +32,7 @@ class Ticket_Details(models.Model):
     ticket_id = models.IntegerField()  # represent unique id of ticket in All_Tickets
     thread_queue_number = models.IntegerField()  # in a thread (of replies under a ticket, queue number represents the order of replies, starting from 0 (the original ticket itself))
     author = models.IntegerField()  # represent id of the user, stated in the table 'createuser_extended_user' in database 50003
-    title = models.CharField(max_length=60)
+    title = models.CharField(max_length=60, null=True, blank=True)  # null and blank = True cos replies do not have titles
     description = models.CharField(max_length=256)
     image = models.ImageField(max_length=100, null=True, blank=True)  # to be implemented
     file = models.FileField(null=True, blank=True)  # to be implemented

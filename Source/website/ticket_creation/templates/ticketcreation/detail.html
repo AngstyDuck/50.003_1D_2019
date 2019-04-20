@@ -20,10 +20,12 @@
 
 {% for row in item %}
  <div class="dotted">
+     {% if row.title != None %}
      <dl class="param param-feature">
      <dt>Title</dt>
      <dd>{{ row.title }}</dd>
      </dl>  <!-- item-property-hor .// -->
+     {% endif %}
      <dl class="param param-feature">
      <dt>Ticket/Reply id (in Ticket_Details)</dt>
      <dd>{{ row.id }}</dd>
@@ -37,13 +39,6 @@
      <dd>{{ row.description }}</dd>
      </dl>  <!-- item-property-hor .// -->
      <dl class="param param-feature">
-     <dt>User</dt>
-     <dd>{{ row.user }}</dd>
-     </dl>  <!-- item-property-hor .// -->
-     <dl class="param param-feature">
-     <dt>Thread ID (in All_Tickets)</dt>
-     <dd>{{ row.ticket_id }}</dd>
-     </dl>
  </div>
 {% endfor %}
 <div class="dotted">
@@ -51,10 +46,6 @@
   <form method="post">
     {% csrf_token %}
     <div class="form-row">
-      <div class="col form-group">
-      <label>Title</label>
-        <input type="text" class="form-control" name="title" placeholder="">
-      </div>
       <div class="col form-group">
         <label>Description</label>
         <input type="text" class="form-control" name="description" placeholder="">

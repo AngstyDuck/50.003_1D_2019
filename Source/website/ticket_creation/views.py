@@ -278,21 +278,18 @@ def detail(request):
 		if request.method == "POST":
 			# user is posting reply to ticket
 			input_field_test = Input_field_test()
-			title = None
 			description = None
 			all_tickets_row = None
 
 
 			try:
-				title = request.POST.get("title")
 				description = request.POST.get("description")
 			except ValueError:
 				pass
 
-			title_validity = input_field_test.ticket_title(title)
 			description_validity = input_field_test.ticket_description(description)
 
-			if len(title_validity)==1 and len(description_validity)==1:
+			if len(description_validity)==1:
 				# update data of thread under All_Tickets
 				all_tickets_row = models.All_Tickets.objects.get(id=ticket_id)
 				new_queue_number = all_tickets_row.size + 1
@@ -300,7 +297,7 @@ def detail(request):
 				all_tickets_row.save()
 
 				# creation of new entry into Ticket_Detail
-				ticket_details_row = models.Ticket_Details(ticket_id=ticket_id, thread_queue_number=new_queue_number, author=request.user.id, title=title, description=description, image=None, file=None, dateTime_created=datetime.datetime.now())
+				ticket_details_row = models.Ticket_Details(ticket_id=ticket_id, thread_queue_number=new_queue_number, author=request.user.id, description=description, image=None, file=None, dateTime_created=datetime.datetime.now())
 				ticket_details_row.save()
 
 				# updating read_by attribute of All_Ticket to be only read by the user posting the reply
@@ -320,11 +317,6 @@ def detail(request):
 				invalid_input_state = False
 				invalid_token_state = False
 
-				for i in title_validity:
-					if i == "empty":
-						empty_input_state = True
-					elif i == "invalid value":
-						invalid_input_state = True
 				for i in description_validity:
 					if i == "empty":
 						empty_input_state = True
@@ -358,14 +350,16 @@ def detail(request):
 
 			if is_authorised:
 				for i in range(all_tickets_row.size+1):   # note that index=0 and index=size both represents some ticket/reply
-					ticketDetails = {"title":None, "id":None, "user":None, "description":None, "ticket_id":None}
+					ticketDetails = {"id":None, "user":None, "description":None, "ticket_id":None}
 					ticket_details_row = models.Ticket_Details.objects.get(ticket_id=ticket_id, thread_queue_number=i)
 
-					ticketDetails["title"] = ticket_details_row.title
 					ticketDetails["id"] = ticket_details_row.id  # id of this ticket/reply (in Ticket_Details)
 					ticketDetails["user"] = ticket_details_row.author  # author of this particular ticket/reply
 					ticketDetails["description"] = ticket_details_row.description
 					ticketDetails["ticket_id"] = ticket_details_row.ticket_id  # id of the ticket that this ticket/reply (in All_Ticket) is tied to
+
+					if i==0:  # first row is the only row with title
+						ticketDetails["title"] = ticket_details_row.title
 
 					outputList.append(ticketDetails)
 
