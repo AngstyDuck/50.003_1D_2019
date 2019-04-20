@@ -15,4 +15,4 @@ RUN pip3 install --trusted-host pypi.python.org -r  requirements.txt
 EXPOSE 8000
 
 # Run app.py when the container launches
-CMD python3 ./website/manage.py runserver
+CMD ["python3", "./website/manage.py", "runserver"]
