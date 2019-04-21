@@ -1,3 +1,5 @@
 # remove all files in pycache
 */__pycache__/*
 *.xml
+# remove file that stores security tokens
+/Source/website/tokens.txt
