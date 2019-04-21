@@ -1,0 +1,74 @@
+{% extends "home/base.html" %}
+{% block content %}
+<head>
+  <style>
+  div.dotted {border-style:dotted;}
+  </style>
+
+</head>
+
+
+<body xmlns="http://www.w3.org/1999/html">
+{% if request.user.is_superuser %}
+  {% if all_tickets_data.resolved_by == None %}
+    <div class="dotted">
+      <h5>Click to resolve ticket:</h5>
+      <a href="/ticket_creation/resolve/?id={{ item.0.ticket_id }}" type="button" onclick="return clicked();">Resolve</a>
+    </div>
+  {% endif %}
+{% endif %}
+
+{% for row in item %}
+ <div class="dotted">
+     {% if row.title != None %}
+     <dl class="param param-feature">
+     <dt>Title</dt>
+     <dd>{{ row.title }}</dd>
+     </dl>  <!-- item-property-hor .// -->
+     {% endif %}
+     <dl class="param param-feature">
+     <dt>Ticket/Reply id (in Ticket_Details)</dt>
+     <dd>{{ row.id }}</dd>
+     </dl>  <!-- item-property-hor .// -->
+     <dl class="param param-feature">
+     <dt>Ticket/Reply author</dt>
+     <dd>{{ row.user }}</dd>
+     </dl>  <!-- item-property-hor .// -->
+     <dl class="param param-feature">
+     <dt>Description</dt>
+     <dd>{{ row.description }}</dd>
+     </dl>  <!-- item-property-hor .// -->
+     <dl class="param param-feature">
+ </div>
+{% endfor %}
+<div class="dotted">
+  <h3>To reply to ticket thread</h3>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="col form-group">
+        <label>Description</label>
+        <input type="text" class="form-control" name="description" placeholder="">
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary btn-block">Submit Reply</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+    function clicked() {
+       if (confirm('Do you want to resolve this ticket?')) {
+           yourformelement.submit();
+
+       } else {
+           return false;
+       }
+    }
+
+</script>
+
+
+</body>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">
+                  <span data-feather="home"></span>
+                  Dashboard <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'ticket_creation:create' %}">
+                  <span data-feather="file"></span>
+                  Create Ticket
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'Profile:viewProfile' %}">
+                  <span data-feather="bar-chart-2"></span>
+                  View my profile
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'ticket_creation:selected_list' %}">
+                  <span data-feather="layers"></span>
+                  View my ticket
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+{% endblock %}

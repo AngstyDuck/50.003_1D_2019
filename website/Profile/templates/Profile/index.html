@@ -1,0 +1,53 @@
+{% extends 'Profile/base.html' %}
+{% block content %}
+<head>
+  <style>
+  div.dotted {border-style:dotted;}
+  </style>
+</head>
+
+
+<body xmlns="http://www.w3.org/1999/html">
+
+<div class="dotted">
+  <form method="post">
+    {% csrf_token %}
+    <h5>To edit your account information</h5>
+    <div class="form-row">
+      <label>Username</label>
+      <input type="text" class="form-control" name="username" value={{user_information.username}}>
+    </div>
+    <div class="form-row">
+      <label>Password</label>
+      <input type="password" class="form-control" name="password">
+    </div>
+    <div class="form-row">
+      <label>Email</label>
+      <input type="text" class="form-control" name="email" value={{user_information.email}}>
+    </div>
+    <div class="form-row">
+      <label>Phone Number</label>
+      <input type="text" class="form-control" name="phoneNumber" value={{user_information.phoneNumber}}>
+    </div>
+    <div class="form-row">
+      <label>Notify email</label>
+      {% if user_information.notify_email %}
+        <input type="checkbox" class="form-control" name="notify_email" value="True" checked>
+      {% else %}
+        <input type="checkbox" class="form-control" name="notify_email" value="True">
+      {% endif %}
+    </div>
+    <div class="form-row">
+      <label>Notify sms</label>
+      {% if user_information.notify_sms %}
+        <input type="checkbox" class="form-control" name="notify_sms" value="True" checked>
+      {% else %}
+        <input type="checkbox" class="form-control" name="notify_sms" value="True">
+      {% endif %}
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary btn-block">Submit new details</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

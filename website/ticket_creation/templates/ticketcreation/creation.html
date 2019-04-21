@@ -1,0 +1,65 @@
+{% extends "home/base.html" %}
+{% block content %}
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success alert-dismissable">
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                {{ message }}
+            </div>
+        {% endif %}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+  </head>
+  <body class="bg-light">
+
+    <div class="container">
+    <div class="py-5 text-center">
+        <h2>Ticket Creation</h2>
+    </div>
+
+    <div class="col-md-8 order-md-1">
+      <form method="post" action="" enctype="multipart/form-data">
+          {% csrf_token %}
+        <div class="mb-3">
+          <label for="title">Ticket Title</label>
+          <input type="text" class="form-control" name="title">
+          <div class="invalid-feedback">
+            Please enter your ticket title.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="description">Ticket Description</label>
+          <textarea rows = 10 cols = 50 name="description" placeholder="description"></textarea>
+        </div>
+
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Create Ticket</button>
+      </form>
+    </div>
+  </div>
+
+
+{% endblock %}
