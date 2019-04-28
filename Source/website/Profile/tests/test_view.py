@@ -8,19 +8,6 @@ from django.test import Client
 from createuser.models import Extended_User
 from Profile.models import Profile
 
-# class Profile(models.Model):
-# 	username=models.CharField(max_length=30)
-# 	phoneNumber = models.CharField(max_length=20)
-# 	email = models.EmailField(max_length=50)
-# 	user = models.CharField(max_length=60)
-
-# username = request.POST.get('username')
-# 				password = request.POST.get('password')
-# 				email = request.POST.get('email')
-# 				phonenumber = request.POST.get('phoneNumber')
-# 				notify_email = request.POST.get('notify_email')
-# 				notify_sms = request.POST.get('notify_sms')
-
 
 class ProfileTestView(TestCase):
     @classmethod
@@ -170,7 +157,7 @@ class ProfileTestView(TestCase):
         # print(response)
         # print(response.context['error_message'])
         self.assertEqual(response.context['error_message'],
-                         "Please choose to be notified via SMS, email, or both")
+                         "Please ensure input fields are valid")
 
     def test_viewProfile(self):
         login = self.client.login(username='testuser2', password='HelloSekai123')

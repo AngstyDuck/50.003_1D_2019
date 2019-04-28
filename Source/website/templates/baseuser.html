@@ -26,18 +26,17 @@
     	$(document).ready( function () {
     	$('#tabledata').DataTable();
 		} );
-
 	</script>
 </head>
 
 <body id="page-top">
 
 	<!-- Page Wrapper -->
-	<div id="wrapper">	  
-		
+	<div id="wrapper">
+
 		<!-- Sidebar -->
 		<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-	  
+
 			<!-- Sidebar - Brand -->
 			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'home:index' %}">
 			  <div class="sidebar-brand-icon rotate-n-15">
@@ -45,30 +44,30 @@
 				</div>
 			  <div class="sidebar-brand-text mx-3"><span style="text-transform: uppercase; font-weight: bold; color: white">Accenture</span><span style="text-transform: uppercase; font-weight: lighter; color:rgb(151, 0, 151)">ITS</span> <br> <span style="text-transform: uppercase; font-weight: lighter; color:white; font-size:8px">Issue Tracking System</span> </div>
 			</a>
-			<!-- Divider --> 
-      <hr class="sidebar-divider my-0"> 
- 
-      <!-- Divider --> 
-      <hr class="sidebar-divider"> 
+			<!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
       <div class="sidebar-brand-text mx-3 text-white">Hello, <br> User {{ user }}  </div>
-      <!-- Divider --> 
-      <hr class="sidebar-divider mt-3 my-0"> 
- 
-      <!-- Divider --> 
-      <hr class="sidebar-divider"> 
-	  
+      <!-- Divider -->
+      <hr class="sidebar-divider mt-3 my-0">
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
 			<!-- Heading -->
 			<div class="sidebar-heading">
 			  Tools
 			</div>
-	  
+
 			<!-- Nav Item - Pages Collapse Menu -->
-			<li class="nav-item"> 
-				<a class="nav-link collapsed" href="{% url 'home:index' %}"> 
-					<i class="fa fa-list-ul"></i> 
-					<span>Dashboard</span> 
-				</a> 
-			</li> 
+			<li class="nav-item">
+				<a class="nav-link collapsed" href="{% url 'home:index' %}">
+					<i class="fa fa-list-ul"></i>
+					<span>Dashboard</span>
+				</a>
+			</li>
 
 			<li class="nav-item">
 			  <a class="nav-link collapsed" href="{% url 'ticket_creation:create' %}">
@@ -76,17 +75,17 @@
 				<span>Create Ticket</span>
 			  </a>
 			</li>
-	  
 
-			<li class="nav-item"> 
-				<a class="nav-link collapsed" href="{% url 'Profile:viewProfile' %}" > 
+
+			<li class="nav-item">
+				<a class="nav-link collapsed" href="{% url 'Profile:viewProfile' %}" >
 					<i class="fas fa-fw fa-user"></i>
-					<span>Profile</span> 
-				</a> 
+					<span>Profile</span>
+				</a>
 			</li>
-	  
-	  
-	  
+
+
+
 			<!-- Divider -->
 			<hr class="sidebar-divider">
 
@@ -94,24 +93,24 @@
       <div class="text-center d-none d-md-inline">
 					<button class="rounded-circle border-0" id="sidebarToggle"></button>
 			</div>
-	  
-		</ul>  
+
+		</ul>
 		<!-- End of Sidebar -->
-	  
+
 	  	<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
-	  
+
 			<!-- Main Content -->
 			<div id="content">
-	  
+
 				<!-- Topbar -->
 				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-	  
+
 				<!-- Sidebar Toggle (Topbar) -->
 				<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
 				  <i class="fa fa-bars"></i>
 				</button>
-	  
+
 				<!-- Topbar Search -->
 				<!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
 				  <div class="input-group">
@@ -123,10 +122,10 @@
 					</div>
 				  </div>
 				</form> -->
-	  
+
 				<!-- Topbar Navbar -->
 				<ul class="navbar-nav ml-auto">
-	  
+
 				  <!-- Nav Item - Search Dropdown (Visible Only XS) -->
 				  <li class="nav-item dropdown no-arrow d-sm-none">
 					<a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -146,7 +145,7 @@
 					  </form>
 					</div>
 				  </li>
-	  
+
 				  <!-- Nav Item - Alerts -->
 				  <li class="nav-item dropdown no-arrow mx-1">
 					<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -175,7 +174,7 @@
 					  <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
 					</div>
 				  </li>
-	  
+
 				  <!-- Nav Item - Messages -->
 				  <li class="nav-item dropdown no-arrow mx-1">
 					<a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -200,9 +199,9 @@
 					  <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
 					</div>
 				  </li>
-	  
+
 				  <div class="topbar-divider d-none d-sm-block"></div>
-	  
+
 					<!-- Nav Item - Signout -->
 					<li>
 						<div class="my-3">
@@ -213,7 +212,7 @@
 					</div>
 					</li>
 
-					
+
 				  <!-- <li class="nav-item dropdown no-arrow">
 					<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					  <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ username }}</span>
@@ -242,27 +241,27 @@
 				  </li>
 	   -->
 				</ul>
-	  
+
 				</nav>
 				<!-- End of Topbar -->
 
 				{% block content %}
 				{% endblock %}
-			</div>	
+			</div>
 			<!-- End of Main Content -->
 
-	  
+
 		</div>
 		<!-- End of Content Wrapper -->
-	  
+
 	  </div>
 	  <!-- End of Page Wrapper -->
-	  
+
 	  <!-- Scroll to Top Button-->
 	  <a class="scroll-to-top rounded" href="#page-top">
 		<i class="fas fa-angle-up"></i>
 	  </a>
-	  
+
 	  <!-- Logout Modal-->
 	  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -281,29 +280,27 @@
 		  </div>
 		</div>
 	  </div>
-	  
-			  
+
+
 	<!-- Bootstrap core JavaScript-->
 		<script src="/static/vendor/jquery/jquery.min.js"></script>
 		<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-				  
+
 		<!-- Core plugin JavaScript-->
 		<script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
-		  
+
 		<!-- Custom scripts for all pages-->
 		<script src="/static/js/sb-admin-2.min.js"></script>
-		  
+
 		<!-- Page level plugins -->
 		<script src="/static/vendor/chart.js/Chart.min.js"></script>
-		  
+
 		<!-- Page level custom scripts -->
 		<script src="/static/js/demo/chart-area-demo.js"></script>
 		<script src="/static/js/demo/chart-pie-demo.js"></script>
-		  
+
 </body>
-		  
+
 </html>
 
-<style>
-
-		  
+</style>

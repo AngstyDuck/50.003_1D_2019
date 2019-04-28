@@ -76,7 +76,7 @@ class HomeViewTest(TestCase):
         login = self.client.login(username='testuser2', password='HelloSekai123')
         # print(login)
         response = self.client.get(reverse('home:index'))
-        self.assertTemplateUsed(response,'dashboarduser.html')
+        self.assertTemplateUsed(response,'baseuser.html')
 
     def test_ADMIN_LOGIN_TICKET_IN_DASHBOARD_uses_correct_template(self):
         login = self.client.login(username='testuser2', password='HelloSekai123')
